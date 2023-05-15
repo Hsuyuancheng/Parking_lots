@@ -36,6 +36,7 @@ tr_counterparty varchar(50),
 tr_type int,
 tr_ps varchar(50),
 tr_pe varchar(50),
+tr_read int DEFAULT 0,
 FOREIGN KEY (member_id) REFERENCES member(member_id));
 
 create table carparking.payment
@@ -48,6 +49,7 @@ py_ps_d varchar(50),
 py_ps_t varchar(50),
 py_pe_d varchar(50),
 py_pe_t varchar(50),
+py_read int DEFAULT 0,
 FOREIGN KEY (license) REFERENCES license(license)
 );
 
