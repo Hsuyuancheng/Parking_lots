@@ -1,4 +1,4 @@
-sessionStorage.setItem('member_id', '1')
+sessionStorage.setItem('member_id', 1)
 var memberid = sessionStorage.getItem('member_id')
 // modal區
 var modal = document.getElementsByClassName("date_modal")
@@ -58,14 +58,16 @@ $('.form_btn button').on('click', function () {
 
 
 $.ajax({
-    url: "http://localhost:3000/select/member/1",
-    type: "GET"
+    url: `http://localhost:3000/select/member`,
+    type: "post",
+    data: { id: memberid }
 }).done(function (x) {
     var datafromS = JSON.parse(x);
     var member_money = datafromS[0].member_money
-    // console.log(member_money)
+    console.log(datafromS)
+    $('#money').text(member_money)
     $.ajax({
-        url: "http://localhost:3000/select/traderecord/1",
+        url: `http://localhost:3000/select/traderecord/${memberid}`,
         type: "GET"
     }).done(function (x) {
         var traderecord = JSON.parse(x)
